@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ejercicio_7 {
 	
 	public static void mostrarInfo(File fichero) {
+		System.out.println("---------------------------------------");
 		System.out.println(fichero.getName());
 		
 		
@@ -18,9 +19,9 @@ public class ejercicio_7 {
 
 			String permisos = (fichero.canRead() ? "r" : "-") +
 
-					(fichero.canWrite() ? "w" : "-") +
+							  (fichero.canWrite() ? "w" : "-") +
 
-					(fichero.canExecute() ? "x" : "-");
+							  (fichero.canExecute() ? "x" : "-");
 			
 			System.out.println(permisos);
 
@@ -34,32 +35,60 @@ public class ejercicio_7 {
 	public static void main(String[] args) {
 
 		Scanner leer = new Scanner(System.in);
-		String introducido;
 
 		ArrayList<File> nombres = new ArrayList<>();
+		int opcion;
+		
+		 do {
+	            System.out.println("\nMENÚ DE GESTIÓN DE FICHEROS");
+	            System.out.println("1 - Añadir fichero");
+	            System.out.println("2 - Mostrar información de los ficheros");
+	            System.out.println("3 - Salir");
+	            System.out.print("Seleccione una opción: ");
 
-		System.out.println("Introduce nombres de fichero (escribe Salir para" + " terminar):  ");
+	            while (!leer.hasNextInt()) {
+	                System.out.print("Por favor, ingrese un número válido: ");
+	                leer.next(); 
 
-		do {
-			System.out.println("Nombre de fichero: ");
-			introducido = leer.nextLine();
+	            }   
+	            opcion = leer.nextInt();
+	            leer.nextLine();
+	            
+	            switch (opcion) {
+	                case 1:
+	                    System.out.print("Nombre de fichero: ");
+	                    String nombreFichero = leer.nextLine();
+	                    File fichero = new File(nombreFichero);
+	                    nombres.add(fichero);
+	                    System.out.println("Fichero añadido.");
+	                    break;
 
-			if (!introducido.equalsIgnoreCase("Salir")) {
-				
-				File fichero = new File (introducido);
-				nombres.add(fichero);
-				System.out.println("Fichero añadido. ");
-			}
-		} while (!introducido.equalsIgnoreCase("Salir"));
+	                case 2:
+	                    if (nombres.isEmpty()) {
+	                        System.out.println("No hay ficheros registrados.");
+	                    } else {
+	                        System.out.println("------------------------------------------------");
+	                        for (File nombre : nombres) {
+	                            mostrarInfo(nombre);
+	                        }
+	                    }
+	                    break;
 
-		System.out.println("------------------------------------------------");
+	                case 3:
+	                    System.out.println("Has salido del programa. ");
+	                    break;
 
-		for (File nombre : nombres) {
+	                default:
+	                    System.out.println("Opción no válida. Intente de nuevo.");
+	            }
 
-			mostrarInfo(nombre);
-			System.out.println("--------------------------------------------");
-		}
+	        } while (opcion != 3);
+
+
+		
 
 	}
-
 }
+
+
+
