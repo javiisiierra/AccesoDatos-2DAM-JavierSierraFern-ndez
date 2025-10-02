@@ -5,66 +5,61 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ejercicio_7 {
+	
+	public static void mostrarInfo(File fichero) {
+		System.out.println(fichero.getName());
+		
+		
+		if (fichero.exists()) {
+			System.out.println("Fichero existe. ");
+			System.out.println("Fichero: " + fichero.isFile() + "Carpeta: " + fichero.isDirectory());
+			System.out.println("Nombre del fichero: " + fichero.getAbsolutePath());
+			
+
+			String permisos = (fichero.canRead() ? "r" : "-") +
+
+					(fichero.canWrite() ? "w" : "-") +
+
+					(fichero.canExecute() ? "x" : "-");
+			
+			System.out.println(permisos);
+
+			System.out.println("Su tamaño es: " + fichero.length());
+
+		} else {
+			System.out.println("EL fichero no existe. ");
+		}
+	}
 
 	public static void main(String[] args) {
-		
+
 		Scanner leer = new Scanner(System.in);
 		String introducido;
-		
-		ArrayList<String> nombres = new ArrayList<>();
-		
-		System.out.println("Introduce nombres de fichero (escribe Salir para"
-				+ " terminar):  ");
-		
+
+		ArrayList<File> nombres = new ArrayList<>();
+
+		System.out.println("Introduce nombres de fichero (escribe Salir para" + " terminar):  ");
+
 		do {
 			System.out.println("Nombre de fichero: ");
-		    introducido = leer.nextLine();
-		   
-		    if(!introducido.equals("Salir")) {
-		    nombres.add(introducido);
-		    System.out.println("Fichero añadido. ");
-		}
-		}while(!introducido.equals("Salir")); 
-			
+			introducido = leer.nextLine();
+
+			if (!introducido.equalsIgnoreCase("Salir")) {
+				
+				File fichero = new File (introducido);
+				nombres.add(fichero);
+				System.out.println("Fichero añadido. ");
+			}
+		} while (!introducido.equalsIgnoreCase("Salir"));
+
 		System.out.println("------------------------------------------------");
-		
-		for(String nombre : nombres) {
-			System.out.println(nombre);
+
+		for (File nombre : nombres) {
+
 			mostrarInfo(nombre);
 			System.out.println("--------------------------------------------");
 		}
-		
-	}	
-		
-		public static void mostrarInfo(String ruta) {
-			File fichero = new File(ruta);
-			
-			if(fichero.exists()) {
-				System.out.println("Fichero existe. ");
-				System.out.println("Fichero: " + fichero.isFile() + "Carpeta: " + fichero.isDirectory());
-				System.out.println("Nombre del fichero: ");
-				System.out.println(fichero.getAbsolutePath());
-					
 
-				String permisos = (fichero.canRead() ? "r" : "-") + 
+	}
 
-								  (fichero.canWrite() ? "w" : "-") +
-
-						          (fichero.canExecute() ? "x" : "-");
-				
-				System.out.println("Su tamaño es: " + fichero.length());
-					
-				}else {
-					System.out.println("EL fichero no existe. ");
-				}
-			}
-		
-		}
-		
-
-
-	
-
-	
-
-
+}
