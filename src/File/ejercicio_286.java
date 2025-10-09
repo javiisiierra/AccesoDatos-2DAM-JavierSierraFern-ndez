@@ -3,16 +3,12 @@ package File;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ejercicio_16 {
-	
-	public class BorrarLineaFichero {
-
+public class ejercicio_286 {
 	public static void main(String[] args) {
 		
 		 Scanner leer = new Scanner(System.in);
@@ -25,9 +21,11 @@ public class ejercicio_16 {
 	            System.out.println("El fichero no existe.");
 	            return;
 	        }
+	        	mostrarFichero(fichero);
+	        
 
 	        
-	        mostrarFichero(fichero);
+	        
 
 	        
 	        System.out.print("\n¿Qué línea quieres borrar?: ");
@@ -88,5 +86,4 @@ public class ejercicio_16 {
 	            System.out.println("No se pudo eliminar el fichero original.");
 	        }
 	    }
-	}
 }
