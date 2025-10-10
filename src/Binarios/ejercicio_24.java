@@ -11,31 +11,33 @@ public class ejercicio_24 {
 
         Scanner leer = new Scanner(System.in);
 
-        System.out.println("Introduce la ruta del fichero: ");
+        System.out.print("Introduce la ruta del fichero: ");
         String ruta = leer.nextLine();
 
         try (DataInputStream dis = new DataInputStream(new FileInputStream(ruta))) {
             System.out.println("\nMostrando fichero:");
 
-          
             while (true) {
                 try {
-                    
                     int expediente = dis.readInt();
                     double nota = dis.readDouble();
-                    String nombre = dis.readUTF();
 
-                    System.out.println("Número expediente: " + expediente + " Nombre: " + nombre + " Nota: " + nota);
-                } catch (IOException e) {
                     
-                    break;
+                    StringBuilder nombre = new StringBuilder();
+                    char c;
+                    while ((c = dis.readChar()) != '\n') {
+                        nombre.append(c);
+                    }
+
+                    System.out.println("Expediente: " + expediente + " Nota: " + nota + " Nombre: " + nombre.toString());
+
+                } catch (IOException e) {
+                    break; 
                 }
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al leer el fichero: " + e.getMessage());
         }
-
-        
     }
 }
