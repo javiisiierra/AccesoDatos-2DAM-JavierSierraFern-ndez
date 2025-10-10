@@ -1,8 +1,9 @@
 package Objetos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Alumno {
+public class Alumno implements Serializable {
 	
 	/*. Implementaremos la clase Alumno con una serie de atributos y métodos.
 Atributos:
@@ -25,7 +26,15 @@ dividiremos por el número total de notas introducidas. */
 	private String apellidos;
 	
 	
-	 private ArrayList<Double> calificaciones = new ArrayList<Double>();
+	 public Alumno(int expediente, String nombre, String apellidos) {
+		super();
+		this.expediente = expediente;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		
+	}
+
+
 
 
 	 public int getExpediente() {
@@ -58,39 +67,15 @@ dividiremos por el número total de notas introducidas. */
 	 }
 
 
-	 public ArrayList<Double> getCalificaciones() {
-		 return calificaciones;
-	 }
-
-
-	 public void setCalificaciones(ArrayList<Double> calificaciones) {
-		 this.calificaciones = calificaciones;
-	 }
-
+	
 
 	 @Override
 	 public String toString() {
-		return "Alumno [expediente=" + expediente + ", nombre=" + nombre + ", apellidos=" + apellidos
-				+ ", calificaciones=" + calificaciones + "]";
+		return "Alumno [expediente=" + expediente + ", nombre=" + nombre + ", apellidos=" + apellidos+ "]";
 	 }
 	
-	 public void anadirNota(double calificacion) {
-		 
-		  calificaciones.add(calificacion);
-	 }
 	
-	public double calcularNota() {
-		
-		
-		double suma = 0;
-		
-		for(Double s : calificaciones) {
-			
-			 suma = suma + s;
-		}
-		
-		return suma/calificaciones.size();
-		
-	}
+	
+	
 	
 }
