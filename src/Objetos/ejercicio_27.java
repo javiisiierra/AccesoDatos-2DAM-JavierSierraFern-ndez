@@ -1,7 +1,16 @@
 package Objetos;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
@@ -11,7 +20,7 @@ public class ejercicio_27{
 	
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws EOFException {
 		
 		
 		Scanner leer = new Scanner(System.in);
@@ -19,8 +28,8 @@ public class ejercicio_27{
 		int opcion = 0;
 		
 		do {
-			System.out.println("MENÚ: \n1-. Dar de alta empleados \n2-. Buscar empleados \n3-. Listar empleados"
-					+ "\n4-. Borrar empleado \n5-. Salir: ");
+			System.out.println("MENÚ: \n1-. Dar de alta a un alumno \n2-. Buscar alumnos \n3-. Listar alumnos"
+					+ "\n4-. Borrar alumno \n5-. Salir: ");
 			opcion = leer.nextInt(); 
 			leer.nextLine();
 			
@@ -36,6 +45,7 @@ public class ejercicio_27{
 			expediente = leer.nextInt();
 			System.out.println("Introduce el nombre del alumno: ");
 			nombre = leer.nextLine();
+			leer.nextLine();
 			System.out.println("Introduce el apellido del alumno: ");
 			apellido = leer.nextLine();
 			
@@ -62,11 +72,61 @@ public class ejercicio_27{
 			 
 		case 2: 
 			
+			System.out.println("Introduce el número de expediente: ");
+			int expediente1 = leer.nextInt();
+			
+			try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("alumno.bin"))){
+				boolean encontrado = false;
+				
+				while(true) {
+					try {
+				Alumno alumno = (Alumno) ois.readObject();
+				
+				if(alumno.getExpediente() == expediente1) {
+					System.out.println("Alumno encontrado: " + alumno);
+					encontrado = true;
+					break;
+				}
+
+					}catch(Exception e) {
+						System.out.println(e.getMessage());
+					}
+				}	
+				
+				if (!encontrado) {
+					System.out.println("Archivo no encontrado. ");
+				}
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
 			
 			break;
 			
 		case 3: 
-			break;
+		
+		    try (ObjectInputStream fichero1 = new ObjectInputStream(new FileInputStream("alumno.bin"))) {
+		        System.out.println("Listado de alumnos:");
+
+		        while (true) {
+		            try {
+		                Alumno a1 = (Alumno) fichero1.readObject();
+		                System.out.println(a1);
+		            } catch (EOFException e) {
+		                break; 
+		            } catch (ClassNotFoundException e) {
+		                System.out.println("Clase Alumno no encontrada.");
+		            }
+		        }
+
+		    } catch (FileNotFoundException e) {
+		        System.out.println("No se encontró el archivo 'alumno.bin'.");
+		    } catch (IOException e) {
+		        System.out.println("Error al leer el archivo: " + e.getMessage());
+		    }
+
+		    break;
+
 			
 		case 4: 
 			break;
@@ -82,4 +142,4 @@ public class ejercicio_27{
 		}while(opcion != 5);
 
 	}
-}//javijavijaviiiito
+}
