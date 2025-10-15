@@ -11,12 +11,12 @@ public class ejercicio_26 {
 	public static void main(String[] args) {
 		
 		
-		Alumno alumno = new Alumno(123, "Paco", "Sanz");
+		Alumno a = new Alumno(123, "Paco", "Sanz");
 		ObjectOutputStream oos =null;
 		
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream("alumno.bin"));
-			oos.writeObject(alumno);
+			oos.writeObject(a);
 			
 			System.out.println("Empleado guardado correctamente en alumno.bin");
 			
