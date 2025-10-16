@@ -133,37 +133,62 @@ public class ejercicio_27{
 			
 			 File ficheroTemporal = new File("tmp.bin");
 			 File ficheroOriginal = new File("alumno.bin");
+			 
+			 boolean encontrado = false;
 
 		        try (
-		            BufferedReader lector = new BufferedReader(new FileReader(ficheroOriginal));
-		            BufferedWriter escritor = new BufferedWriter(new FileWriter(ficheroTemporal))
+		            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ficheroOriginal));
+		        		
 		        ) {
-		            String linea;
-		            int numLinea = 1;
+		        	
+		        	ObjectOutputStream oos;
+		        	 
+					if (ficheroTemporal.exists()) {
+		                 oos = new MiObjectOutputStream(new FileOutputStream(ficheroTemporal, true));
+		             } else {
+		                 oos = new ObjectOutputStream(new FileOutputStream(ficheroTemporal));
+		             }
+		           
 
-		            while ((linea = lector.readLine()) != null) {
-		                if (numLinea != borrar) {
-		                    escritor.write(linea);
-		                    escritor.newLine();
-		                }
-		                numLinea++;
-		            }
+					while (true) {
+			            try {
+			                Alumno alumno = (Alumno) ois.readObject();
+			                if (alumno.getExpediente() != borrar) {
+			                    oos.writeObject(alumno);
+			                } else {
+			                    encontrado = true;
+			                }
+			            } catch (EOFException e) {
+			                break;
+			            }
+			        }
 
-		        } catch (IOException e) {
-		            System.out.println("Error al modificar el fichero.");
-		            e.printStackTrace();
-		            return;
-		        }
-		        
-		        if (ficheroOriginal.delete()) {
-		            if (!ficheroTemporal.renameTo(ficheroOriginal)) {
-		                System.out.println("No se pudo renombrar el archivo temporal.");
-		            }
-		        } else {
-		            System.out.println("No se pudo eliminar el fichero original.");
-		        }
-			
-			break;
+			        oos.close(); 
+
+			    } catch (IOException | ClassNotFoundException e) {
+			        System.out.println("Error al procesar el archivo: " + e.getMessage());
+			        e.printStackTrace();
+			        break;
+			    }
+
+			    
+			    if (encontrado) {
+			        
+			        if (ficheroOriginal.delete()) {
+			            if (ficheroTemporal.renameTo(ficheroOriginal)) {
+			                System.out.println("Alumno borrado correctamente.");
+			            } else {
+			                System.out.println("No se pudo renombrar el archivo temporal.");
+			            }
+			        } else {
+			            System.out.println("No se pudo eliminar el archivo original.");
+			        }
+			    } else {
+			        System.out.println("Alumno no encontrado.");
+			        ficheroTemporal.delete(); 
+			    }
+
+			    break;
 			
 		case 5: 
 			System.out.println("Has salido del programa. ");
