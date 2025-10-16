@@ -42,10 +42,9 @@ public class ejercicio_27{
 			int expediente; String nombre, apellido;
 			
 			System.out.println("Introduce el número de expediente: ");
-			expediente = leer.nextInt();
+			expediente = Integer.parseInt(leer.nextLine());
 			System.out.println("Introduce el nombre del alumno: ");
 			nombre = leer.nextLine();
-			leer.nextLine();
 			System.out.println("Introduce el apellido del alumno: ");
 			apellido = leer.nextLine();
 			
@@ -129,6 +128,41 @@ public class ejercicio_27{
 
 			
 		case 4: 
+			System.out.println("Introduce el número de expediente del alumno a borrar: ");
+			int borrar = leer.nextInt();
+			
+			 File ficheroTemporal = new File("tmp.bin");
+			 File ficheroOriginal = new File("alumno.bin");
+
+		        try (
+		            BufferedReader lector = new BufferedReader(new FileReader(ficheroOriginal));
+		            BufferedWriter escritor = new BufferedWriter(new FileWriter(ficheroTemporal))
+		        ) {
+		            String linea;
+		            int numLinea = 1;
+
+		            while ((linea = lector.readLine()) != null) {
+		                if (numLinea != borrar) {
+		                    escritor.write(linea);
+		                    escritor.newLine();
+		                }
+		                numLinea++;
+		            }
+
+		        } catch (IOException e) {
+		            System.out.println("Error al modificar el fichero.");
+		            e.printStackTrace();
+		            return;
+		        }
+		        
+		        if (ficheroOriginal.delete()) {
+		            if (!ficheroTemporal.renameTo(ficheroOriginal)) {
+		                System.out.println("No se pudo renombrar el archivo temporal.");
+		            }
+		        } else {
+		            System.out.println("No se pudo eliminar el fichero original.");
+		        }
+			
 			break;
 			
 		case 5: 
