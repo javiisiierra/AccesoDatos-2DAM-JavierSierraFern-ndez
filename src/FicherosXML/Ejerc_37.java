@@ -1,4 +1,4 @@
-/*package FicherosXML;
+package FicherosXML;
 
 import java.io.File;
 import java.util.Scanner;
@@ -8,7 +8,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
@@ -34,11 +37,12 @@ public class Ejerc_37 {
 			 
 			 case 1:
 				 System.out.println("Introduce el número de expediente: ");
-				 int numExpediente = leer.nextInt();
+				 String numExpediente = leer.nextLine();
+				 leer.nextLine();
 				 System.out.println("Introduce el nombre: ");
 				 String nombre = leer.nextLine();
 				 System.out.println("Introduce la nota: ");
-				 double nota = leer.nextDouble();
+				 String nota = leer.nextLine();
 				 
 				 try {
 						DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
@@ -55,26 +59,62 @@ public class Ejerc_37 {
 						Element elemento3 = documento.createElement("nombreAlumno");
 						Element elemento4 = documento.createElement("nota");
 						
+						//ALUMNOS
 						documento.appendChild(elemento);
+						//ALUMNO COMO HUIJO DE ALUMNOS
 						elemento.appendChild(elemento1);
+						
+						
+						//METES EL VALOR DEL EXPEDIENTE
+						elemento2.appendChild(documento.createTextNode(numExpediente));
+						//LO PONES COMO HIJO DE ALUMNO
 						elemento1.appendChild(elemento2);
-						elemento2.setTextContent(String.valueOf(numExpediente));
+						//METES EL VALOR DEL NOMBRE
+						elemento3.appendChild(documento.createTextNode(nombre));
+						//LO AÑADO
+						elemento1.appendChild(elemento3);
+						
+						//METES EL VALOR EXPEDIENTE
+						elemento4.appendChild(documento.createTextNode(nota));
+						//LO AÑADO
+						elemento1.appendChild(elemento4);
+						
+						elemento2.setTextContent(numExpediente);
 						elemento3.setTextContent(nombre);
-						elemento.setTextContent(Double.toString(nota));
+						elemento4.setTextContent(nota);
 						
 						DOMSource fuente = new DOMSource(documento);
-						StreamResult ficheroXML = new StreamResult(new File("ejerc35.xml"));
+						StreamResult ficheroXML = new StreamResult(new File("ejerc37.xml"));
 						
 						StreamResult consola = new StreamResult(System.out);
 						
-						 Transformer t = TransformerFactory.newInstance().newTransformer();
+						 Transformer t = null;
+						try {
+							t = TransformerFactory.newInstance().newTransformer();
+						} catch (TransformerConfigurationException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (TransformerFactoryConfigurationError e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						
 						 t.setOutputProperty(OutputKeys.INDENT, "yes");
 						 t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 						 
-						 t.transform(fuente, ficheroXML);
+						 try {
+							t.transform(fuente, ficheroXML);
+						} catch (TransformerException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						 
-						  t.transform(fuente, consola);
+						  try {
+							t.transform(fuente, consola);
+						} catch (TransformerException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						 } catch (ParserConfigurationException e) {
 						 }
 						
@@ -102,4 +142,4 @@ public class Ejerc_37 {
 	}
 
 }
-*/
+
