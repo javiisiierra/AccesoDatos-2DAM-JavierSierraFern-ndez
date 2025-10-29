@@ -6,5 +6,80 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/codemodel.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/dtd-parser.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/FastInfoset.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/istack-commons-runtime.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/istack-commons-tools.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/javax.activation-api.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/jaxb-api.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/jaxb-jxc.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/jaxb-runtime.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/jaxb-xjc.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/relaxng-datatype.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/rngom.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/stax-ex.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/txw2.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/diurno/Escritorio/Librerias/jaxb-ri-2.3.1/xsom.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
