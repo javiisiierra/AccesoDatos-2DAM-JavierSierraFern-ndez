@@ -2,23 +2,20 @@ package FicherosXML;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
-import com.sun.xml.txw2.annotation.XmlAttribute;
 
 @XmlRootElement
-@XmlType(propOrder = { "nombre", "lugar", "cp", "listLibros" })
 public class Libreria {
 	
 	ArrayList<Libro> listaLibros = new ArrayList<Libro>();
-	
-	
-
 	private String nombre, lugar;
 	private int cp;
+	
+	
 	
 	public Libreria() {
 		
