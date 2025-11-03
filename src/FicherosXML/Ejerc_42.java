@@ -6,6 +6,9 @@ import java.util.Scanner;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.transform.stream.StreamResult;
+
+
 
 
 
@@ -56,18 +59,19 @@ public class Ejerc_42 {
 		
 		//PASAR LA LIBREIA A XML
 		try {
+			 StreamResult ficheroXML = new StreamResult(new File("ejercicio42.xml"));
 			// Crear contexto JAXB
-			JAXBContext jaxbContext = JAXBContext.newInstance("/home/diurno/Escritorio/AccesoDatos/AccesoDatos/bin/FicherosXML/Libreria.class");
-			
-			
+			JAXBContext jaxbContext = JAXBContext.newInstance(Libreria.class);
 			Marshaller marshaller = jaxbContext.createMarshaller();
 			// Configuración opcional para formato legible
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 			// Convertir objeto a XML y mostrar en consola
+			marshaller.marshal(miLibreria, ficheroXML);
 			marshaller.marshal(miLibreria, System.out);
 			} catch (JAXBException e) {
 			e.printStackTrace();
 			}
+
 		
 
 	}
