@@ -3,6 +3,7 @@ package FicherosXML;
 import java.io.File;
 import java.util.Scanner;
 
+import java.util.Iterator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -65,16 +66,28 @@ public class Ejerc_44 {
 			}
 			
 			break;
-		/*case 5:
+		case 5:
 			System.out.println("Introduce el DNI: ");
 			String dniIntroducido2 = (leer.nextLine());
 			
-			for(Trabajador t : miEmpresas.listaTrabajadores) {
-				if(t.getDni().equalsIgnoreCase(dniIntroducido2)) {
-					
-				}
-			}
-			break;*/
+			boolean eliminar = false;
+			
+			
+			 Iterator<Trabajador> it = miEmpresas.getListaTrabajadores().iterator();
+			    while (it.hasNext()) {
+			        Trabajador t = it.next();
+			        if (t.getDni().equalsIgnoreCase(dniIntroducido2)) {
+			            it.remove();
+			            eliminar = true;
+			            System.out.println("Trabajador eliminado correctamente.");
+			            break; 
+			        }
+			    }
+			    
+			    if(!eliminar) {
+			    	System.out.println("No se ha podido eliminar el trabajador.");
+			    }
+			break;
 		case 6:
 			System.out.println("Has salido del programa");
 			break;	
