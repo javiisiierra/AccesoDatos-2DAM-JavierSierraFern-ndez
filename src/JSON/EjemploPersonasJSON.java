@@ -9,7 +9,7 @@ public class EjemploPersonasJSON {
 	public static void main(String[] args) {
 		
 		
-		File fichero=new File("C:\\Users\\usuario\\Desktop\\leerPersonas.json");
+		File fichero=new File("/home/diurno/Escritorio/leerPersonas.json");
 		
 		if (fichero.exists())
 		
