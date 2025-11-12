@@ -3,8 +3,13 @@ package EjercicioPrueba;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
 public class Personas1 implements Serializable{
 	
+
 	private  ArrayList<Persona1> listaPersonas = new ArrayList<Persona1>();
 
 

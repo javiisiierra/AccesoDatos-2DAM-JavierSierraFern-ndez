@@ -2,21 +2,26 @@ package EjercicioPrueba;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.databind.deser.Deserializers;
 
+@XmlRootElement(name="persona")
 public class Persona1 implements Serializable{
 
-	private String dni, nombre;
-	private int edad;
+	private String dni, nombre, email;
+	private int edad, telefono;
 	
 	public Persona1() {
 
 	}
 
-	public Persona1(String dni, String nombre, int edad) {
+	public Persona1(String dni, String nombre, String email, int edad, int telefono) {
 		this.dni = dni;
 		this.nombre = nombre;
+		this.email = email;
 		this.edad = edad;
+		this.telefono = telefono;
 	}
 
 	public String getDni() {
@@ -35,6 +40,14 @@ public class Persona1 implements Serializable{
 		this.nombre = nombre;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public int getEdad() {
 		return edad;
 	}
@@ -43,11 +56,21 @@ public class Persona1 implements Serializable{
 		this.edad = edad;
 	}
 
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
 	@Override
 	public String toString() {
-		return "Persona1 [dni=" + dni + ", nombre=" + nombre + ", edad=" + edad + "]";
+		return "Persona1 [dni=" + dni + ", nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", telefono="
+				+ telefono + "]";
 	}
-	
+
+
 	
 	
 }
