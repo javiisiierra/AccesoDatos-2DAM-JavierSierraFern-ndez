@@ -14,7 +14,7 @@ public class Ejercicio1 {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		 try {
 		 // Leer el fichero JSON y convertirlo a un objeto de tipo Personas (ArrasList)
-		 Personas1 personas = mapper.readValue(new File("C:\\Users\\usuario\\Desktop\\personas.json"), Personas1.class);
+		 Personas1 personas = mapper.readValue(new File("/home/diurno/Escritorio/personas.json"), Personas1.class);
 		 // Imprimir el objeto Persona
 		 System.out.println("Resultado");
 		 personas.mostrarPersonas();

@@ -2,6 +2,7 @@ package EjercicioPrueba;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.databind.deser.Deserializers;
@@ -24,6 +25,7 @@ public class Persona1 implements Serializable{
 		this.telefono = telefono;
 	}
 
+	@XmlElement(name="dni")
 	public String getDni() {
 		return dni;
 	}
@@ -32,6 +34,7 @@ public class Persona1 implements Serializable{
 		this.dni = dni;
 	}
 
+	@XmlElement(name="nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -40,6 +43,7 @@ public class Persona1 implements Serializable{
 		this.nombre = nombre;
 	}
 
+	@XmlElement(name="email")
 	public String getEmail() {
 		return email;
 	}
