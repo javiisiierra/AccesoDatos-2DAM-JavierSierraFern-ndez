@@ -22,7 +22,7 @@ public class Ejercicio2 {
 		try {
 			JAXBContext contexto = JAXBContext.newInstance(personas.class);
 			 Unmarshaller um = contexto.createUnmarshaller();
-			 personas personas2 = (personas) um.unmarshal(new File("/home/diurno/Escritorio/personas.xml"));
+			 personas personas2 = (personas) um.unmarshal(new File("C:\\Users\\usuario\\Desktop\\personas.xml"));
 			 
 			 personas2.mostrarPersonas();
 			 

@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.deser.Deserializers;
 
 @XmlRootElement(name="persona")
 public class Persona1 implements Serializable{
+	
+	
 
 	private String dni, nombre, email;
 	private int edad, telefono;
