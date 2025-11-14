@@ -16,7 +16,7 @@ public class Ejercicio5 {
 		
 		ArrayList<Persona1> lista = null;
 		
-		try(ObjectInputStream ois = new ObjectInputStream (new FileInputStream("C:\\Users\\usuario\\git\\AccesoDatos-2DAM-JavierSierraFern-ndez\\personas.obj"))){
+		try(ObjectInputStream ois = new ObjectInputStream (new FileInputStream("personas.obj"))){
 			personas p = (personas) ois.readObject();
 			lista = p.getPersonas();
 			

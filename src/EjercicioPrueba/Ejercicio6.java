@@ -15,7 +15,7 @@ public class Ejercicio6 {
 		String dni2 = leer.nextLine();
 		
 		try {
-			RandomAccessFile archivo = new RandomAccessFile("C:\\Users\\\\usuario\\git\\AccesoDatos-2DAM-JavierSierraFern-ndez\\telefonos.bin", "r");
+			RandomAccessFile archivo = new RandomAccessFile("telefonos.bin", "r");
 			boolean encontrado = false;
 			while (archivo.getFilePointer() < archivo.length()) {
 				String dni = archivo.readUTF();
