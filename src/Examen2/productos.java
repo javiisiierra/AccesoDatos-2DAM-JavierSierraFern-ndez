@@ -1,6 +1,16 @@
 package Examen2;
 
-public class productos {
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@XmlType(propOrder={"nombre", "talla", "color", "precio", "estado"})
+@JsonIgnoreProperties({"stock", "descuento", "coste", "nombre", "talla", "color", "estado"})
+
+public class productos implements Serializable{
 
 	private int id, stock,descuento, precio,  coste;
 	private String nombre, talla, color, estado;
@@ -24,7 +34,7 @@ public class productos {
 		this.estado = estado;
 	}
 
-
+	@XmlTransient
 	public int getId() {
 		return id;
 	}
@@ -34,7 +44,7 @@ public class productos {
 		this.id = id;
 	}
 
-
+	@XmlTransient
 	public int getStock() {
 		return stock;
 	}
@@ -44,7 +54,7 @@ public class productos {
 		this.stock = stock;
 	}
 
-
+	@XmlTransient
 	public int getDescuento() {
 		return descuento;
 	}
@@ -64,7 +74,7 @@ public class productos {
 		this.precio = precio;
 	}
 
-
+	@XmlTransient
 	public int getCoste() {
 		return coste;
 	}

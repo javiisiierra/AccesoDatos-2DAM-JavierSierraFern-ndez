@@ -1,8 +1,14 @@
 package Examen2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Lista {
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Lista implements Serializable{
 
 	private ArrayList<productos> listaProductos = new ArrayList<>();
 
@@ -13,7 +19,8 @@ public class Lista {
 	public Lista(ArrayList<productos> listaProductos) {
 		this.listaProductos = listaProductos;
 	}
-
+	@XmlElementWrapper(name="listaProductos")
+	@XmlElement(name="producto")
 	public ArrayList<productos> getListaProductos() {
 		return listaProductos;
 	}
