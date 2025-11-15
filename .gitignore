@@ -1,1 +1,7 @@
 /bin/
+*.bin
+*.dat
+*.obj
+*.csv
+*.json
+*.xml
