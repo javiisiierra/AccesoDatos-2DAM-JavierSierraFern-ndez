@@ -1,25 +1,21 @@
-package EjercicioPrueba;
+package Examen1;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
-import com.fasterxml.jackson.databind.deser.Deserializers;
+@XmlType(propOrder = {"dni", "telefono", "email"})
 
-@XmlRootElement(name="persona")
-public class Persona1 implements Serializable{
-	
-	
-
+public class persona implements Serializable{
 	private String dni, nombre, email;
 	private int edad, telefono;
 	
-	public Persona1() {
+	public persona() {
 
 	}
 
-	public Persona1(String dni, String nombre, String email, int edad, int telefono) {
+	public persona(String dni, String nombre, String email, int edad, int telefono) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.email = email;
@@ -27,7 +23,6 @@ public class Persona1 implements Serializable{
 		this.telefono = telefono;
 	}
 
-	@XmlElement(name="dni")
 	public String getDni() {
 		return dni;
 	}
@@ -36,7 +31,7 @@ public class Persona1 implements Serializable{
 		this.dni = dni;
 	}
 
-	@XmlElement(name="nombre")
+	@XmlTransient
 	public String getNombre() {
 		return nombre;
 	}
@@ -45,7 +40,6 @@ public class Persona1 implements Serializable{
 		this.nombre = nombre;
 	}
 
-	@XmlElement(name="email")
 	public String getEmail() {
 		return email;
 	}
@@ -54,6 +48,7 @@ public class Persona1 implements Serializable{
 		this.email = email;
 	}
 
+	@XmlTransient
 	public int getEdad() {
 		return edad;
 	}
@@ -72,11 +67,9 @@ public class Persona1 implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Persona1 [dni=" + dni + ", nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", telefono="
+		return "persona [dni=" + dni + ", nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", telefono="
 				+ telefono + "]";
 	}
-
-
 	
 	
 }
