@@ -1,4 +1,4 @@
-package Examen2;
+ 	package Examen2;
 
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
