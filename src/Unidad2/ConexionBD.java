@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 	
-	private static final String URL = "jdbc:mysql://localhost:3306/navavinted?allowMultiQueries=true";
+	private static final String URL = "jdbc:mysql://localhost:3306/alumnos?allowMultiQueries=true";
 	 private static final String USER = "root"; // Usuario
 	 private static final String PASSWORD = "12345"; // Contraseña
 	 public static Connection conectar() {
