@@ -62,6 +62,56 @@ public class Ejercicio2_Examen {
                     new File("C:\\Users\\usuario\\Downloads\\zapatos.json"),
                     Lista22.class
             );
+            
+            // 2.1)Leer de un xml e insertar
+           /* private static void importarXMLaBD(Connection conn) throws Exception {
+
+                // 1. Cargar y parsear el XML
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document doc = builder.parse("zapatos.xml");   // ruta al XML
+
+                doc.getDocumentElement().normalize();
+
+                // 2. Obtener la lista de nodos <zapato>
+                NodeList listaZapatos = doc.getElementsByTagName("zapato");
+
+                // 3. Preparar el INSERT
+                String sql = "INSERT INTO ZAPATO (marca, modelo, tamano, color, stock, precio) " +
+                             "VALUES (?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+                    for (int i = 0; i < listaZapatos.getLength(); i++) {
+                        Node nodo = listaZapatos.item(i);
+                        if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+                            Element e = (Element) nodo;
+
+                            String marca  = e.getElementsByTagName("marca").item(0).getTextContent();
+                            String modelo = e.getElementsByTagName("modelo").item(0).getTextContent();
+                            int tamano    = Integer.parseInt(e.getElementsByTagName("tamano").item(0).getTextContent());
+                            String color  = e.getElementsByTagName("color").item(0).getTextContent();
+                            int stock     = Integer.parseInt(e.getElementsByTagName("stock").item(0).getTextContent());
+                            double precio = Double.parseDouble(e.getElementsByTagName("precio").item(0).getTextContent());
+
+                            // 4. Rellenar parámetros del INSERT
+                            ps.setString(1, marca);
+                            ps.setString(2, modelo);
+                            ps.setInt(3, tamano);
+                            ps.setString(4, color);
+                            ps.setInt(5, stock);
+                            ps.setDouble(6, precio);
+
+                            ps.addBatch();   // añade a lote
+                        }
+                    }
+
+                    // 5. Ejecutar todos los INSERTs de golpe
+                    ps.executeBatch();
+                    System.out.println("Zapatos importados desde XML correctamente.");
+                }
+            }*/
+
+            
 
             // 3) Insertar los zapatos en la tabla
             insertarZapatosEnBD(conn, lista);
